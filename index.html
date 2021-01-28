@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <title>Document</title>
+    <style>
+        .myBlock
+        {
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+            top: calc(50% - 50px);
+            left: calc(50% - 50px);
+            background-color: red;
+            border-radius: 25%;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="myBlock"></div>
+
+    <script>
+        $(document).on('keyup', function(e) {
+           console.log('Тип события: ' + e.type); //keyup
+           console.log('Код нажатой клавиши или символа: ' + e.which); // код символа позволяет получить только keypress
+
+           if (e.which == 37){
+               console.log('Влево');
+               var left = $('.myBlock').css('left');
+               var leftN = parseInt(left) - 100;
+               $('.myBlock').css({
+                   'left': leftN + 'px'
+               })
+           }
+
+           if (e.which == 39){
+               console.log('Вправо');
+               var left = $('.myBlock').css('left');
+               var leftN = parseInt(left) + 100;
+               $('.myBlock').css({
+                   'left': leftN + 'px'
+               })
+           }
+
+
+           if (e.which == 40){
+               console.log('Вниз');
+               var top = $('.myBlock').css('top');
+               var topN = parseInt(top) + 100;
+               $('.myBlock').css({
+                   'top': topN + 'px'
+               })
+           }
+
+
+           if (e.which == 38){
+               console.log('Вверх');
+               var top = $('.myBlock').css('top');
+               var topN = parseInt(top) - 100;
+               $('.myBlock').css({
+                   'top': topN + 'px'
+               })
+           }
+
+        });
+        </script>
+</body>
+</html>
